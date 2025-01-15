@@ -45,6 +45,7 @@ height:100px;
     border: 1px solid #cacaca;
     padding: 7px 0 7px 20px;
     font-size: 12px;
+    color: #979797;
 }
 .perfil-edit-info-button-update{
     display: flex;
@@ -78,4 +79,5 @@ height:100px;
     border-radius: 10px;
     border: 1px solid #cacaca;
     padding: 2px 10px 2px 10px;
+    color: #979797;
 }

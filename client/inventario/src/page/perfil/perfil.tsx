@@ -21,11 +21,11 @@ function Perfil() {
             <div className="perfil-edit-info">
                 <div className="perfil-edit-info-inputs-1">
                     <label htmlFor="">Nombre</label>
-                    <input type="text" />
+                    <input placeholder="Ignacio" type="text" />
                 </div>
                 <div className="perfil-edit-info-inputs-1">
                     <label htmlFor="">Nombre de la empresa</label>
-                    <input type="text" />
+                    <input placeholder="Pollito new" type="text" />
                 </div> 
                 </div>
                
@@ -37,7 +37,7 @@ function Perfil() {
                 </div>
                 <div className="perfil-edit-info-inputs-1">
                     <label htmlFor="">Numero de telefono</label>
-                    <input type="number" />
+                    <input placeholder="123456789" type="number" />
                 </div>
             
                 </div>
