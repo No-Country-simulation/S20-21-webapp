@@ -8,6 +8,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import LandingPage from "../page/landing/landingPage";
 import Bacio from "../page/bacio";
+import Layaud from "../page/Layaud/Layaud";
 
 /**
  * @typedef {Object} RouteConfig
@@ -39,8 +40,14 @@ const router = createBrowserRouter([
         errorElement: <div>Ups! Algo salio mal</div>,
     },
     {
-        path: "/Layaud",
-        element: <Bacio/>,
+        path: "/inventario",
+        element: <Layaud/>,
+        children:[
+            {
+                path:"bacio",
+                element: <Bacio/>
+            },
+        ],
         errorElement: <div>Ups! Algo salio mal</div>
     },
 
