@@ -1,6 +1,10 @@
 const Bacio = () => {
   return (
-    <div></div>
+    <div>
+
+      <h1>Hola como estamos</h1>
+
+    </div>
   )
 }
 
