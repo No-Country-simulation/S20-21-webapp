@@ -9,7 +9,8 @@ import { createBrowserRouter } from "react-router-dom";
 import LandingPage from "../page/landing/landingPage";
 import Bacio from "../page/bacio";
 import Layaud from "../page/Layaud/Layaud";
-
+import Perfil from "../page/perfil/perfil";
+import Inventario from "../page/inventario/inventario";
 /**
  * @typedef {Object} RouteConfig
  * @property {string} path - Ruta URL
@@ -46,6 +47,14 @@ const router = createBrowserRouter([
             {
                 path:"bacio",
                 element: <Bacio/>
+            },
+            {
+                path:"perfil",
+                element: <Perfil/>
+            },
+            {
+                path:"inventario",
+                element: <Inventario/>
             },
         ],
         errorElement: <div>Ups! Algo salio mal</div>
