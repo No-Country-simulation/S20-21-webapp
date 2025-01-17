@@ -5,6 +5,8 @@ import { generateCode } from "../utils/securityCode";
 import { validateOTP } from "../utils/validateOTP";
 import { AppError } from "./extern/appError";
 import { sendOTPtoEmail } from "./extern/mailSending.service";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 interface RegisterUserParams {
     name: string;
     email: string;
@@ -12,6 +14,17 @@ interface RegisterUserParams {
   interface VerifyRegisterParams {
     token: string;
     user: UserInput;
+  }
+  export interface LoginResponse {
+    token: string;
+    user: {
+      id: number;
+      name: string;
+      email: string;
+      img: string;
+      company: string;
+      typeBusiness: string;
+    };
   }
 export const registerUser = async ({ name, email }: RegisterUserParams) => {
     // Verificar si el usuario ya existe
@@ -81,3 +94,37 @@ export const registerUser = async ({ name, email }: RegisterUserParams) => {
     };
   };
   
+  export const loginService = async (email: string, password: string): Promise<LoginResponse> => {
+    // Buscar al usuario por email
+    const user = await User.findOne({
+      where: { email },
+      attributes: ["id", "password", "name", "email", "img", "company", "typeBusiness"],
+    });
+  
+    if (!user) {
+      throw new Error("User not found");
+    }
+  
+    const userData = user.get();
+  
+    // Comparar contraseñas (esto debe usar bcrypt en producción)
+    const isMatch = bcrypt.compareSync(password, userData.password); // Usa bcrypt.compare(password, userData.password) en producción
+    if (!isMatch) {
+      throw new Error("Incorrect credentials");
+    }
+  
+    // Generar un token JWT
+    const token = jwt.sign({ id: userData.id, email: userData.email }, "palabra_secreta", { expiresIn: "1h" });
+  
+    return {
+      token,
+      user: {
+        id: userData.id,
+        name: userData.name,
+        email: userData.email,
+        img: userData.img,
+        company:userData.company,
+        typeBusiness:userData.typeBusiness
+      },
+    };
+  };
