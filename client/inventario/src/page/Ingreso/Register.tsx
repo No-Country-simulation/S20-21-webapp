@@ -7,7 +7,6 @@ function Register() {
     const [password, setPassword] = useState("");
 
     const handleRegister = () => {
-        // Aquí puedes añadir la lógica de registro
         console.log("Register with:", { name, email, password });
     };
 

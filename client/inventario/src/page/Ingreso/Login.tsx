@@ -6,7 +6,6 @@ function Login() {
     const [password, setPassword] = useState("");
 
     const handleLogin = () => {
-        // Aquí puedes añadir la lógica de autenticación
         console.log("Login with:", { email, password });
     };
 
