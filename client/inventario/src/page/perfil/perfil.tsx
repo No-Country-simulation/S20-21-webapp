@@ -28,7 +28,7 @@ function Perfil() {
                     <input placeholder="Pollito new" type="text" />
                 </div> 
                 </div>
-               
+                
                 <div className="perfil-edit-info">
                 
                 <div className="perfil-edit-info-inputs-1">
@@ -39,17 +39,16 @@ function Perfil() {
                     <label htmlFor="">Numero de telefono</label>
                     <input placeholder="123456789" type="number" />
                 </div>
-            
                 </div>
-              
-               <div className="perfil-edit-info-button-update" >
+
+            <div className="perfil-edit-info-button-update" >
                     <button>Actualizar Información</button>
                 </div>
 
                 <div className="perfil-title">
                 <h4>Informacion de seguridad</h4>
             </div>
-           
+
             <div className="perfil-edit-info">
                 <div className="perfil-edit-info-inputs-2">
                     <label htmlFor="">Antigua contraseña</label>
