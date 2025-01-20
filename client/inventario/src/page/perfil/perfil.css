@@ -1,84 +1,146 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-.perfil-title h4{
-    font-size:35px ;
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+.perfil-title h4 {
+    font-size: 2rem;
     font-weight: 600;
     color: rgba(33, 53, 85, 1);
-   
+    text-align: center;
+    margin-bottom: 1rem;
 }
-.perfil-edit-image{
- display: flex;
+
+.perfil-edit-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
-.perfil-edit-image img{
-width: 200px;
-height:100px;
-}
-.perfil-edit-image button{
+
+.perfil-edit-image img {
     width: 150px;
-    height: 39px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.perfil-edit-image button {
+    width: 80%;
+    max-width: 200px;
+    height: 40px;
     background: rgba(33, 53, 85, 1);
     color: #ffffff;
     font-weight: 600;
     border-radius: 10px;
-    margin-top: 50px;
+    border: none;
+    cursor: pointer;
 }
 
-.perfil-box-info{
-    width: 1156px;
+.perfil-box-info {
+    width: 100%;
+    max-width: 1156px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
-.perfil-edit-info{
+
+.perfil-edit-info {
     display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    justify-content: center;
 }
-.perfil-edit-info-inputs-1{
+
+.perfil-edit-info-inputs-1,
+.perfil-edit-info-inputs-2 {
     display: flex;
     flex-direction: column;
-    font-size: 20px;
-    padding: 15px 35px 0 0;
-    width: 600px;
+    font-size: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+    max-width: 600px;
     color: rgba(33, 53, 85, 1);
 }
-.perfil-edit-info-inputs-1 label{
-    padding: 0 0 10px 0;
+
+.perfil-edit-info-inputs-1 label,
+.perfil-edit-info-inputs-2 label {
+    margin-bottom: 0.5rem;
     font-weight: 600;
-    
 }
-.perfil-edit-info-inputs-1 input{
+
+.perfil-edit-info-inputs-1 input,
+.perfil-edit-info-inputs-2 input {
     border-radius: 10px;
     border: 1px solid #cacaca;
-    padding: 7px 0 7px 20px;
-    font-size: 12px;
-    color: #979797;
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: #333;
+    width: 100%;
+    box-sizing: border-box;
 }
-.perfil-edit-info-button-update{
+
+.perfil-edit-info-button-update {
     display: flex;
-    justify-content: end;
-    margin: 30px 35px 0 0px;
+    justify-content: center;
+    margin: 2rem 0;
 }
-.perfil-edit-info-button-update button{
-    width: 230px;
-    height: 39px;
+
+.perfil-edit-info-button-update button {
+    width: 80%;
+    max-width: 230px;
+    height: 40px;
     background: rgba(33, 53, 85, 1);
     color: #ffffff;
     font-weight: 600;
     border-radius: 10px;
+    border: none;
+    cursor: pointer;
 }
 
+/* Media Queries */
+@media (max-width: 768px) {
+    .perfil-title h4 {
+        font-size: 1.5rem;
+    }
 
+    .perfil-edit-image img {
+        width: 120px;
+        height: 120px;
+    }
 
-.perfil-edit-info-inputs-2{
-    display: flex;
-    flex-direction: column;
-    font-size: 20px;
-    padding: 15px 35px 0 0;
-    width: 600px;
-    color:rgba(33, 53, 85, 1);
+    .perfil-edit-info {
+        flex-direction: column;
+    }
+
+    .perfil-edit-info-inputs-1,
+    .perfil-edit-info-inputs-2 {
+        max-width: 100%;
+    }
+
+    .perfil-edit-info-button-update button {
+        max-width: 100%;
+    }
 }
-.perfil-edit-info-inputs-2 label{
-    padding: 0 0 10px 0;
-    font-weight: 600;
-}
-.perfil-edit-info-inputs-2 input{
-    border-radius: 10px;
-    border: 1px solid #cacaca;
-    padding: 2px 10px 2px 10px;
-    color: #979797;
+
+@media (max-width: 480px) {
+    .perfil-title h4 {
+        font-size: 1.2rem;
+    }
+
+    .perfil-edit-image button {
+        font-size: 0.9rem;
+        height: 35px;
+    }
+
+    .perfil-edit-info-inputs-1 input,
+    .perfil-edit-info-inputs-2 input {
+        font-size: 0.9rem;
+        padding: 0.4rem;
+    }
 }
