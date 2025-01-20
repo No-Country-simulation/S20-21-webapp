@@ -37,7 +37,7 @@ function Login() {
                     <button onClick={handleLogin}>Ingresar</button>
                 </div>
                 <p className="auth-footer">
-                    ¿No tienes cuenta? <a href="/register">Regístrate</a>
+                    ¿No tienes cuenta? <a href="register">Regístrate</a>
                 </p>
             </div>
         </div>
