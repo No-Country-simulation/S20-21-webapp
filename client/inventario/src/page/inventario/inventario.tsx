@@ -9,7 +9,7 @@ function Inventario() {
    const [agregarImagen, setAgregarImagen] = useState(false)
    const [editarimagen, setEditarimagen] = useState(false)
    const [filtrarpor, setFiltrarpor] = useState("")
-   const numero = 50
+   //const numero = 50
    return (
       <>
 
