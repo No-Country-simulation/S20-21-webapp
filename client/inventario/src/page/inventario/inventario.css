@@ -144,7 +144,7 @@
 
 .inventario-download {
     position: absolute;
-    right: 22%;
+    right: 18%;
     top: 23%;
 }
 
@@ -343,3 +343,10 @@ background:rgba(80, 214, 189, 1) ;
 background: rgba(255, 15, 10, 1);
 }
 
+@media (max-width:1440px) {
+    .inventario-download {
+        position: absolute;
+        right: 18%;
+        top: 26%;
+    } 
+}
