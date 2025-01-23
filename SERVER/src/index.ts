@@ -1,17 +1,22 @@
-import express, { Request, Response } from 'express';
+import app from './app';
+import sequelize from './config/db'; // Configuración de tu base de datos
+import './models/initModels'; // Inicializa tus modelos
 
-const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-// Middleware para parsear JSON
-app.use(express.json());
+const main = async (): Promise<void> => {
+    try {
+        // Conexión a la base de datos
+        await sequelize.sync();
+        console.log('Database connected successfully.');
 
-// Ruta de ejemplo
-app.get('/', (req: Request, res: Response) => {
-  res.send('¡Hola, mundo desde Node.js con TypeScript!');
-});
+        // Inicia el servidor
+        app.listen(PORT, () => {
+            console.log(`Server is running on http://localhost:${PORT}`);
+        });
+    } catch (error) {
+        console.error('Error starting the server:', error);
+    }
+};
 
-// Iniciar servidor
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+main();
