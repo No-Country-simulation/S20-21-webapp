@@ -1,12 +1,26 @@
 import { BellIcon, UserCircleIcon } from '@heroicons/react/24/outline';
-import { Link } from 'react-router-dom';  // Importa Link de React Router
+import { Link } from 'react-router-dom';
 
-const NavBar = () => {
+// Define la interfaz para las props
+interface NavBarProps {
+  toggleSidebar: () => void; // Define el tipo de toggleSidebar
+}
+
+const NavBar: React.FC<NavBarProps> = ({ toggleSidebar }) => {
   return (
     <nav className="flex items-center justify-between h-full px-6 bg-beige text-customBlue">
       {/* Logo o título */}
       <div className="text-2xl font-bold"></div>
-      
+
+      {/* Botón para abrir/cerrar el sidebar en móviles */}
+      <button 
+        className="md:hidden p-2 rounded-full hover:bg-beigeclaro" 
+        onClick={toggleSidebar} 
+        aria-label="Abrir/Cerrar Sidebar"
+      >
+        ☰ {/* Icono de menú (puedes usar un icono de tu elección) */}
+      </button>
+
       {/* Contenedor de los iconos */}
       <div className="flex items-center space-x-6">
         {/* Icono de notificaciones */}
@@ -23,14 +37,14 @@ const NavBar = () => {
 
         {/* Icono de perfil */}
         <Link 
-          to="./perfil"  // Usa 'to' en lugar de 'href' cuando usas Link de React Router
+          to="./perfil" 
           className="p-2 rounded-full hover:bg-beigeclaro"
         >
           <UserCircleIcon className="w-6 h-6" />
         </Link>
       </div>
     </nav>
-  )
+  );
 }
 
 export default NavBar;
