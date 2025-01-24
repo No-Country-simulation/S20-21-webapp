@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';  // Importa Link de React Router
 const SideBar = () => {
   return (
     <div className="w-full h-full bg-customBlue text-beigeclaro p-5 space-y-4 flex flex-col">
-      <h2 className="text-xl font-bold mb-5 mt-3"> STOCKLY</h2>
+      <h2 className="text-xl font-bold mb-5 mt-3"> INVENTIA </h2>
       <ul className="space-y-2 flex-1">
         <li>
           <Link to="./home" className="flex items-center py-2 px-4 hover:bg-bluelith rounded">
