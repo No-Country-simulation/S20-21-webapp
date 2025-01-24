@@ -11,11 +11,17 @@ const Layout = () => {
     setIsSidebarOpen(!isSidebarOpen); // Cambia el estado al hacer clic
   };
 
+  const closeSidebar = () => {
+    if (window.innerWidth < 768) { // Solo cierra si el ancho es menor al breakpoint de 'md'
+      setIsSidebarOpen(false);
+    }
+  };
+
   return (
     <div className="h-screen w-screen overflow-hidden flex">
       {/* Sidebar fijo */}
       <aside className={`fixed top-0 left-0 w-[250px] h-full bg-[rgb(33, 53, 85)] sidebar ${isSidebarOpen ? 'block' : 'hidden'} md:block`}>
-        <SideBar />
+        <SideBar closeSidebar={closeSidebar} />
       </aside>
 
       {/* Contenedor principal (Navbar + contenido) */}

@@ -12,6 +12,7 @@ import Perfil from "../page/perfil/perfil";
 import Inventario from "../page/inventario/inventario";
 import Login from "../page/Ingreso/Login";
 import Register from "../page/Ingreso/Register";
+import Home from "../page/home/home";
 
 
 /**
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
             {
                 path: "inventario",
                 element: <Inventario />,
+            },
+            {
+                path: "home",
+                element: <Home/>
             },
         ],
         errorElement: <div>Ups! Algo salió mal</div>,
