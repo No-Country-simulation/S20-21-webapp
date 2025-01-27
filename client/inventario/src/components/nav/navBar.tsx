@@ -1,27 +1,37 @@
-import { useState } from "react";
-import { BellIcon, UserCircleIcon } from '@heroicons/react/24/outline';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { BellIcon, UserCircleIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
 // Define la interfaz para las props
 interface NavBarProps {
-  toggleSidebar: () => void; // Define el tipo de toggleSidebar
+  toggleSidebar: () => void; // Función para abrir/cerrar el sidebar
+  isSidebarOpen: boolean;    // Estado del sidebar
 }
 
-const NavBar: React.FC<NavBarProps> = ({ toggleSidebar }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado local para el botón
+const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, isSidebarOpen }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(isSidebarOpen); // Estado local del botón de menú
+
+  // Sincroniza el estado local con el estado del sidebar
+  useEffect(() => {
+    setIsMenuOpen(isSidebarOpen);
+  }, [isSidebarOpen]);
 
   const handleToggle = () => {
-    setIsMenuOpen(!isMenuOpen); // Cambia el estado del botón
-    toggleSidebar(); // Llama a la función recibida como prop
+    setIsMenuOpen(!isMenuOpen); // Cambia el estado local
+    toggleSidebar(); // Llama a la función del componente padre
   };
 
   return (
-    <nav className="flex items-center justify-between h-full px-6 bg-beige text-customBlue">
+    <nav className="flex items-center justify-between h-full px-6 bg-beige text-customBlue shadow-md">
       {/* Logo o título */}
       <div className="text-2xl font-bold">
-        <div className='md:hidden'>
+        <button
+          className="md:hidden font-bold text-lg"
+          aria-label="Abrir Sidebar"
+          onClick={handleToggle}
+        >
           INVENTIA
-        </div>
+        </button>
       </div>
 
       {/* Botón para abrir/cerrar el sidebar en móviles */}
@@ -33,45 +43,42 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar }) => {
         {/* Líneas del menú */}
         <div
           className={`w-6 h-0.5 bg-customBlue transition-transform duration-300 ${
-            isMenuOpen ? 'rotate-45 translate-y-2' : ''
+            isMenuOpen ? "rotate-45 translate-y-2" : ""
           }`}
         ></div>
         <div
           className={`w-6 h-0.5 bg-customBlue my-1 transition-opacity duration-300 ${
-            isMenuOpen ? 'opacity-0' : ''
+            isMenuOpen ? "opacity-0" : ""
           }`}
         ></div>
         <div
           className={`w-6 h-0.5 bg-customBlue transition-transform duration-300 ${
-            isMenuOpen ? '-rotate-45 -translate-y-2' : ''
+            isMenuOpen ? "-rotate-45 -translate-y-2" : ""
           }`}
         ></div>
       </button>
 
-      {/* Contenedor de los iconos */}
+      {/* Iconos de navegación */}
       <div className="flex items-center space-x-6">
         {/* Icono de notificaciones */}
-        <button 
+        <button
           className="relative p-2 rounded-full hover:bg-[rgb(245, 239, 231)]"
           aria-label="Notificaciones"
         >
           <BellIcon className="w-7 h-7" />
-          {/* Indicador de notificaciones */}
           <span className="absolute top-1 right-1 bg-red-500 text-beigeclaro text-xs font-bold rounded-full h-4 w-4 flex items-center justify-center">
             3
           </span>
         </button>
 
         {/* Icono de perfil */}
-        <Link 
-          to="./perfil" 
-          className="p-2 rounded-full hover:bg-beigeclaro"
-        >
+        <Link to="./perfil" className="p-2 rounded-full hover:bg-beigeclaro">
           <UserCircleIcon className="w-8 h-8" />
         </Link>
       </div>
     </nav>
   );
-}
+};
 
 export default NavBar;
+
