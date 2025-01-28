@@ -1,7 +1,7 @@
 import "./landingPage.css";
-import Ingresar from "./components-landing/ingresar";
-import Benefits from "./components-landing/benefits";
-import Contacto from "./components-landing/contacto";
+import Ingresar from "../../components/components-landing/ingresar";
+import Benefits from "../../components/components-landing/benefits";
+import Contacto from "../../components/components-landing/contacto";
 const landingPage = () => {
   return (
     <>

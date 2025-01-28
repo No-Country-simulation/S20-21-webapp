@@ -97,3 +97,99 @@ transition: 0.2s;
     width: 700px;
  
 }
+
+@media (max-width:1440px){
+   
+    .ingresar-title-box{
+        font-size: 28px;
+        margin: 10% 0 0 0;
+    }
+
+  
+    .ingresar-title-box h4{
+      width: 800px;
+     
+    }
+    
+    .ingresar-button-box a{
+      
+        width: 800px;
+    
+    
+    }
+    
+    .ingresar-button-box button{
+        width: 250px;
+       padding: 10px;
+        font-size: 20px;
+    }
+  
+    .Ingresar-parrafo-box{
+  
+        font-size: 24px;
+     
+    }
+    .Ingresar-parrafo-box p{
+        width: 650px;
+     
+    } 
+}
+
+
+
+@media (max-width:920px){
+
+ 
+    .ingresar-title-box{
+        font-size: 20px;
+    }
+
+    .ingresar-title-box h4{
+      width: 800px;
+     
+    }
+    
+ 
+    
+    .ingresar-button-box button{
+        width: 200px;
+        font-size: 15px;
+      
+    }
+    .Ingresar-parrafo-box{
+      
+        font-size: 16px;
+     
+    }
+    .Ingresar-parrafo-box p{
+        width: 350px;
+     
+    }
+    
+
+}
+
+@media (max-width:578px){
+ 
+      
+      .ingresar-title-box{
+          font-size: 20px;
+      }
+    
+      .ingresar-title-box h4{
+        width: 800px;
+       
+      }
+      
+      .ingresar-button-box button{
+          width: 200px;
+          font-size: 18px;
+       
+      }
+ 
+      .Ingresar-parrafo-box p{
+          width: 350px;
+       
+      }
+      
+}
