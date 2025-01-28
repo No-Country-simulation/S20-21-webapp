@@ -1,4 +1,4 @@
-import "../Estilos-components/contacto.css";
+import "./Estilos-components/contacto.css";
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";

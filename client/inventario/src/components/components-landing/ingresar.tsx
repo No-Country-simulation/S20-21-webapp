@@ -1,4 +1,4 @@
-import "../Estilos-components/ingresar.css"
+import "./Estilos-components/ingresar.css"
 import { Link } from "react-router-dom"
 
 function Ingresar() {
