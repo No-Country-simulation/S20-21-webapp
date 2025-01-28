@@ -1,4 +1,4 @@
-import "../Estilos-components/benefits.css";
+import "./Estilos-components/benefits.css";
 
 interface BenefitProps {
   title: string;
