@@ -1,6 +1,18 @@
 const Home = () => {
   return (
-    <div>hola estas en el home, despues me pongo a hacerlo estoy haciengo otras cosas, escuchamos y no juzgamos Xb </div>
+    <div className="h-full w-full">
+      <div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div>
+        Aca va el componente del grafico
+      </div>
+      <div>
+        Aca va la tabla 
+      </div>
+    </div>
   )
 }
 
