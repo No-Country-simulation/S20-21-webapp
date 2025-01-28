@@ -17,10 +17,16 @@ const Layout = () => {
   ]);
 
   const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen); // Cambia el estado al hacer clic
+    if (window.innerWidth < 768) {
+      setShowNotifications(false); // Cierra las notificaciones si se abre el sidebar en mobile
+    }
+    setIsSidebarOpen(!isSidebarOpen); 
   };
 
   const toggleNotifications = () => {
+    if (window.innerWidth < 768) {
+      setIsSidebarOpen(false); // Cierra el sidebar si se abren las notificaciones en mobile
+    }
     setShowNotifications(!showNotifications);
   };
 
