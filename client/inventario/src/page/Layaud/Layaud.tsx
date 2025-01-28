@@ -9,7 +9,7 @@ const Layout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Estado para controlar el sidebar
   const [showNotifications, setShowNotifications] = useState(false);
 
-  const [notificaciones] = useState([
+  const [notificaciones, setNotificaciones] = useState([
     { id: 1, mensaje: "Los productos se estan por acabar" },
     { id: 2, mensaje: "Nuevo Producto" },
     { id: 3, mensaje: "Producto agregado a favoritos" },
@@ -22,6 +22,11 @@ const Layout = () => {
 
   const toggleNotifications = () => {
     setShowNotifications(!showNotifications);
+  };
+
+  // Función para marcar como leída y eliminar la notificación
+  const marcarComoLeida = (id: number) => {
+    setNotificaciones((prev) => prev.filter((notificacion) => notificacion.id !== id));
   };
 
   const closeSidebar = () => {
@@ -54,7 +59,7 @@ const Layout = () => {
           />
         </header>
         {/* Notifications */}
-        {showNotifications && <Notificaciones notificaciones={notificaciones}/>}
+        {showNotifications && <Notificaciones notificaciones={notificaciones} marcarComoLeida={marcarComoLeida}/>}
 
         {/* Contenedor principal (Outlet) */}
         <main className="mt-24 h-[calc(100vh-6rem)] overflow-y-auto bg-[rgb(245, 239, 231)] p-8">
