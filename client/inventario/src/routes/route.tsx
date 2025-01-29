@@ -5,7 +5,7 @@
  */
 
 import { createBrowserRouter } from "react-router-dom";
-import LandingPage from "../page/landing/landingPage";
+import Landing from "../page/landing/landing";
 import Bacio from "../page/bacio";
 import Layaud from "../page/Layaud/Layaud";
 import Perfil from "../page/perfil/perfil";
@@ -22,7 +22,7 @@ import Register from "../page/Ingreso/Register";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <LandingPage />,
+        element: <Landing />,
         errorElement: <div>Ups! Algo salió mal</div>,
     },
     {
