@@ -1,17 +1,14 @@
+import { catchError } from "../middlewares/catchError";
 import { ProductService } from "../services/product.service";
 import { Request, Response, NextFunction } from "express";
 const productService = new ProductService();
 
-export const catchError = (controller: any) => {
-  return (req: Request, res: Response, next: NextFunction) => {
-    controller(req, res, next).catch(next);
-  };
-};
+
 
 export const createProduct = catchError(async (req: Request, res: Response) => {
-  console.log(req.body)
-  const product = await productService.createProduct(req.body);
-  console.log("product", product)
+ 
+  const image = req.file ? req.file.path : null; // Extrae la URL de la imagen
+  const product = await productService.createProduct({ ...req.body, img: image });
   res.status(201).json({
     message: "Producto creado exitosamente",
     product,
@@ -19,7 +16,13 @@ export const createProduct = catchError(async (req: Request, res: Response) => {
 });
 
 export const getAllProducts = catchError(async (req: Request, res: Response) => {
-  const products = await productService.getAllProducts();
+  const idUser = Number(req.params.idUser); // Convertir el parámetro a número
+
+  if (isNaN(idUser)) {
+    return res.status(400).json({ message: "ID de usuario no válido" });
+  }
+
+  const products = await productService.getAllProducts(idUser);
   res.status(200).json(products);
 });
 
@@ -33,7 +36,8 @@ export const getProductById = catchError(async (req: Request, res: Response) => 
 });
 
 export const updateProduct = catchError(async (req: Request, res: Response) => {
-  const product = await productService.updateProduct(Number(req.params.id), req.body);
+  const image = req.file ? req.file.path : null;
+  const product = await productService.updateProduct(Number(req.params.id), { ...req.body, img: image });
   res.status(200).json({
     message: "Producto actualizado exitosamente",
     product,
