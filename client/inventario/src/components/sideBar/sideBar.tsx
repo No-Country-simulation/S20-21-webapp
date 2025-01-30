@@ -38,7 +38,7 @@ const SideBar: React.FC<SideBarProps> = ({ closeSidebar, setIsSidebarOpen }) => 
         </li>
         <li>
           <Link
-            to="#"
+            to="./proveedores"
             className="flex items-center py-2 px-4 hover:bg-bluelith rounded"
             onClick={handleLinkClick}
           >
@@ -48,7 +48,7 @@ const SideBar: React.FC<SideBarProps> = ({ closeSidebar, setIsSidebarOpen }) => 
         </li>
         <li>
           <Link
-            to="#"
+            to="./reportes"
             className="flex items-center py-2 px-4 hover:bg-bluelith rounded"
             onClick={handleLinkClick}
           >
