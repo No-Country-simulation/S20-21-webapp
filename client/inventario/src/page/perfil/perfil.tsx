@@ -5,7 +5,9 @@ function Perfil() {
         <>
        
 
-       
+          <div className="perfil-box">
+
+        
             <div className="perfil-title">
                 <h4>Informacion de perfil</h4>
             </div>
@@ -66,6 +68,8 @@ function Perfil() {
                 <div  className="perfil-edit-info-button-update" >
                     <button>Cambiar contraseña</button>
                 </div>
+</div>  
+
 </div>
         </>
     )

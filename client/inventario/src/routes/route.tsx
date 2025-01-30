@@ -5,7 +5,7 @@
  */
 
 import { createBrowserRouter } from "react-router-dom";
-import LandingPage from "../page/landing/landingPage";
+import LandingPage from "../page/landing/landing";
 import Layaud from "../page/Layaud/Layaud";
 import Perfil from "../page/perfil/perfil";
 import Inventario from "../page/inventario/inventario";
