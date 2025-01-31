@@ -1,4 +1,23 @@
-const Home = () => {
+import React from "react"
+import Tablas from "../../components/tablas/tablas"
+
+const Home: React.FC = () => {
+  const columns = [
+    {key: "imagen", label: "Imagen"},
+    {key: "producto", label: "Producto"},
+    {key: "valor", label: "Valor"},
+    {key: "cantidad", label: "Cantidad"},
+    {key: "status", label: "Status"},
+  ];
+  const data = [
+    {imagen:"", producto:"",valor:25, cantidad:5, status:""},
+    {imagen:"", producto:"",valor:25, cantidad:5, status:""},
+    {imagen:"", producto:"",valor:25, cantidad:5, status:""},
+    {imagen:"", producto:"",valor:25, cantidad:5, status:""},
+    {imagen:"", producto:"",valor:25, cantidad:5, status:""},
+    {imagen:"", producto:"",valor:25, cantidad:5, status:""},
+    {imagen:"", producto:"",valor:25, cantidad:5, status:""},
+  ];
   return (
     <div className="h-full w-full">
       {/* Carrusel - Solo en mobile */}
@@ -15,14 +34,13 @@ const Home = () => {
         <div className="md:shadow-[0px_1px_6px_6px_#E5E1DA] h-full w-[32.5%] rounded-md bg-white"></div>
       </div>
 
-
-
-      <div className="">
+      <div className="mb-4">
         Aca va el componente del grafico
       </div>
-      <div className="">
-        Aca va la tabla 
+      <div className="shadow-[0px_1px_6px_6px_#E5E1DA] w-full h-90 bg-white rounded-md ">
+        <Tablas columns={columns} data={data} /> 
       </div>
+      <div className="h-4 w-full"></div>
     </div>
   )
 }

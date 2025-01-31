@@ -1,5 +1,5 @@
 /**
- * @fileoverview Configuración de rutas principales de la aplicación médica
+ * @fileoverview Configuración de rutas principales de la aplicación 
  * @module Routes
  * @version 1.0.0
  */
@@ -12,6 +12,10 @@ import Inventario from "../page/inventario/inventario";
 import Login from "../page/Ingreso/Login";
 import Register from "../page/Ingreso/Register";
 import Home from "../page/home/home";
+import Proveedores from "../page/Proveedores/Proveedores";
+import Reportes from "../page/Reportes/Reportes";
+import ProtectedRoute from "./protectedRoute";
+import RouteRedirect from "./routeRedirect";
 
 
 /**
@@ -41,8 +45,16 @@ const router = createBrowserRouter([
     },
     {
         path: "/inventario",
-        element: <Layaud />,
+        element:(
+            <ProtectedRoute>
+                <Layaud />
+            </ProtectedRoute>
+        ),  
         children: [
+            {
+                index: true,
+                element: <RouteRedirect to="home" />
+            },
             {
                 path: "perfil",
                 element: <Perfil />,
@@ -54,6 +66,14 @@ const router = createBrowserRouter([
             {
                 path: "home",
                 element: <Home/>
+            },
+            {
+                path: "proveedores",
+                element: <Proveedores/>
+            },
+            {
+                path: "reportes",
+                element: <Reportes/>
             },
         ],
         errorElement: <div>Ups! Algo salió mal</div>,
