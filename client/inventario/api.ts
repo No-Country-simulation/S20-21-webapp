@@ -22,5 +22,5 @@ export const loginUser = async (email: string, password: string) => {
 
 
 export const logoutUser = async () => {
-  await fetch(`${API_URL}/auth/logout`, { method: "POST"});
+  await fetch(`${API_URL}/api/v1/auth/login`, { method: "POST"});
 };

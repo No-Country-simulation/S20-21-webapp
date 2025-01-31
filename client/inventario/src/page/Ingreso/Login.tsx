@@ -10,22 +10,12 @@ function Login() {
     const login = useAuthStore((state) => state.login);
     const navigate = useNavigate();
 
-    // Mock de usuario para pruebas
-    const mockUser = {
-        email: "test@example.com",
-        password: "password123",
-    };
-
     const handleLogin = async () => {
         setError(""); // Resetear errores
-        //Para probar el back hay que cambiar todo esto
-        // Verificar contra el mock (solo para pruebas)
-        if (email === mockUser.email && password === mockUser.password) {
-            // Si el mock es correcto, se realiza el login
-            login(mockUser.email, mockUser.password); // Simulamos el login sin token real
-            navigate("../../inventario/home"); // Redirige a la página protegida
+        const success = await login(email, password);
+        if (success) {
+            navigate("../../inventari/home"); // Cambia esto por la página a la que deba redirigir
         } else {
-            // Si no coincide, error
             setError("Correo o contraseña incorrectos");
         }
     };
