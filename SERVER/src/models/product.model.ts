@@ -5,18 +5,19 @@ export interface ProductAttributes {
   id: number;
   idUser: number;
   name: string;
-  description: string;
+  description?: string;
   price: number;
   stock: number;
   minimum_stock: number;
   status: string;
   active: boolean;
+  img?: string | null;
   updatedAt?: Date;
   createdAt?: Date;
 }
 
 // Define el tipo del objeto que se pasa a Product.create()
-export interface ProductInput extends Optional<ProductAttributes, "id" | "active" | "description"> {}
+export interface ProductInput extends Optional<ProductAttributes, "id" | "active" | "description" | "img"> {}
 
 export class Product extends Model<ProductAttributes, ProductInput> {
   static initModel(sequelize: Sequelize) {
@@ -59,6 +60,10 @@ export class Product extends Model<ProductAttributes, ProductInput> {
         active: {
           type: DataTypes.BOOLEAN,
           defaultValue: true,
+        },
+        img: {
+          type: DataTypes.STRING,
+          allowNull: true,
         },
       },
       {

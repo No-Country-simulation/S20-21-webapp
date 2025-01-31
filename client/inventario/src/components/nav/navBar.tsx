@@ -6,19 +6,20 @@ import { Link } from "react-router-dom";
 interface NavBarProps {
   toggleSidebar: () => void; // Función para abrir/cerrar el sidebar
   isSidebarOpen: boolean;    // Estado del sidebar
+  cantidadNotificaciones: number; // Número de notificaciones
+  toggleNotifications: () => void;
 }
 
-const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, isSidebarOpen }) => {
+const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, isSidebarOpen, cantidadNotificaciones, toggleNotifications }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(isSidebarOpen); // Estado local del botón de menú
 
-  // Sincroniza el estado local con el estado del sidebar
   useEffect(() => {
     setIsMenuOpen(isSidebarOpen);
   }, [isSidebarOpen]);
 
   const handleToggle = () => {
-    setIsMenuOpen(!isMenuOpen); // Cambia el estado local
-    toggleSidebar(); // Llama a la función del componente padre
+    setIsMenuOpen(!isMenuOpen);
+    toggleSidebar();
   };
 
   return (
@@ -40,7 +41,6 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, isSidebarOpen }) => {
         onClick={handleToggle}
         aria-label="Abrir/Cerrar Sidebar"
       >
-        {/* Líneas del menú */}
         <div
           className={`w-6 h-0.5 bg-customBlue transition-transform duration-300 ${
             isMenuOpen ? "rotate-45 translate-y-2" : ""
@@ -63,12 +63,15 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, isSidebarOpen }) => {
         {/* Icono de notificaciones */}
         <button
           className="relative p-2 rounded-full hover:bg-[rgb(245, 239, 231)]"
+          onClick={toggleNotifications}
           aria-label="Notificaciones"
         >
           <BellIcon className="w-7 h-7" />
-          <span className="absolute top-1 right-1 bg-red-500 text-beigeclaro text-xs font-bold rounded-full h-4 w-4 flex items-center justify-center">
-            3
-          </span>
+          {cantidadNotificaciones > 0 && (
+            <span className="absolute top-1 right-1 bg-red-500 text-beigeclaro text-xs font-bold rounded-full h-4 w-4 flex items-center justify-center">
+              {cantidadNotificaciones}
+            </span>
+          )}
         </button>
 
         {/* Icono de perfil */}
@@ -81,4 +84,3 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, isSidebarOpen }) => {
 };
 
 export default NavBar;
-
