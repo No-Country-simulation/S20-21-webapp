@@ -1,5 +1,5 @@
 /**
- * @fileoverview Configuración de rutas principales de la aplicación médica
+ * @fileoverview Configuración de rutas principales de la aplicación 
  * @module Routes
  * @version 1.0.0
  */
@@ -14,6 +14,8 @@ import Register from "../page/Ingreso/Register";
 import Home from "../page/home/home";
 import Proveedores from "../page/Proveedores/Proveedores";
 import Reportes from "../page/Reportes/Reportes";
+import ProtectedRoute from "./protectedRoute";
+import RouteRedirect from "./routeRedirect";
 
 
 /**
@@ -43,8 +45,16 @@ const router = createBrowserRouter([
     },
     {
         path: "/inventario",
-        element: <Layaud />,
+        element:(
+            <ProtectedRoute>
+                <Layaud />
+            </ProtectedRoute>
+        ),  
         children: [
+            {
+                index: true,
+                element: <RouteRedirect to="home" />
+            },
             {
                 path: "perfil",
                 element: <Perfil />,
