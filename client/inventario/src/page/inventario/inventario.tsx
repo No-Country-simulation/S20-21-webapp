@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./inventario.css"
 import { BsFillTrashFill, BsDownload, BsFillPencilFill } from "react-icons/bs";
 import { BiCamera } from "react-icons/bi";
+import axios from "axios";
 function Inventario() {
 
    const [addproduct, setAddproduct] = useState(false)
@@ -9,7 +10,22 @@ function Inventario() {
    const [agregarImagen, setAgregarImagen] = useState(false)
    const [editarimagen, setEditarimagen] = useState(false)
    const [filtrarpor, setFiltrarpor] = useState("")
+   const [productosusuario, setProductosusuario] = useState([])
+
    //const numero = 50
+   const obtenerProductos = async () => {
+      try {
+         const responseProductos = await axios.get("http://localhost:3000/api/v1/product/userProducts/3")
+         setProductosusuario(responseProductos.data)
+      } catch {
+         console.log("No se obtuvieron productos");
+
+      }
+
+
+   }
+
+
    return (
       <>
 
@@ -62,7 +78,30 @@ function Inventario() {
                   <th>Accion</th>
                </tr>
             </thead>
+            {productosusuario.map((i) => (
+               
+               <tbody>
 
+                     <tr>
+                        <td><i><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRatAKQaBQrq4d0imSB5oxC_X7IDhE9Jjh2Dw&s" alt="" /></i></td>
+                        <td>{i.name}</td>
+                        <td>$25.00</td>
+                        <td>25</td>
+                        <td><span>Disponible</span></td>
+                        <td>
+                           <button>< BsFillTrashFill /></button>
+
+                           <button onClick={() => setEditproduct(!editproduct)}> <BsFillPencilFill /></button>
+                        </td>
+
+                     </tr>
+
+
+
+                  </tbody>
+
+             
+            ))}
             <tbody>
 
                <tr>
@@ -79,46 +118,7 @@ function Inventario() {
 
                </tr>
 
-               <tr>
-                  <td><i><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRatAKQaBQrq4d0imSB5oxC_X7IDhE9Jjh2Dw&s" alt="" /></i></td>
-                  <td>Papas</td>
-                  <td>$25.00</td>
-                  <td>25</td>
-                  <td><span>Disponible</span></td>
-                  <td>
-                     <button>< BsFillTrashFill /></button>
 
-                     <button onClick={() => setEditproduct(!editproduct)}> <BsFillPencilFill /></button>
-                  </td>
-
-               </tr>
-
-               <tr>
-                  <td><i><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRatAKQaBQrq4d0imSB5oxC_X7IDhE9Jjh2Dw&s" alt="" /></i></td>
-                  <td>Papas</td>
-                  <td>$25.00</td>
-                  <td>25</td>
-                  <td><span>Disponible</span></td>
-                  <td>
-                     <button>< BsFillTrashFill /></button>
-
-                     <button onClick={() => setEditproduct(!editproduct)}> <BsFillPencilFill /></button>
-                  </td>
-
-               </tr>
-
-               <tr>
-                  <td><i><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRatAKQaBQrq4d0imSB5oxC_X7IDhE9Jjh2Dw&s" alt="" /></i></td>
-                  <td>Papas</td>
-                  <td>$25.00</td>
-                  <td>25</td>
-                  <td><span>Disponible</span></td>
-                  <td>
-                     <button>< BsFillTrashFill /></button>
-                     <button onClick={() => setEditproduct(!editproduct)}> <BsFillPencilFill /></button>
-                  </td>
-
-               </tr>
 
             </tbody>
          </table>
@@ -130,7 +130,7 @@ function Inventario() {
 
          <>
             <div className={addproduct ? "inventario-agregar-producto" : "inventario-agregar-producto-false"}>
-  
+
                <div className="inventario-agregar-producto-box-inputs">
                   <div className="inventario-agregar-producto-input">
                      <div className="inventario-agregar-producto-cerrar">
@@ -188,48 +188,48 @@ function Inventario() {
 
          </>
          <div className={editproduct ? "inventario-editar-producto" : "inventario-editar-producto-false"}>
-  <div className="inventario-editar-producto-box-inputs">
-    <div className="inventario-editar-producto-input">
-      <div className="inventario-editar-producto-cerrar">
-        <label htmlFor="">Nombre del producto</label>
-        
-        <button
-          onClick={() => setEditproduct(!editproduct)}
-          className="inventario-editar-producto-boton-cerrar"
-        >
-          +
-        </button>
-      </div>
-      <input type="text" />
-    </div>
-    <div className="inventario-editar-producto-input">
-      {editarimagen && (
-        <>
-          <label htmlFor="">Imagen del producto</label>
-          <input type="url" />
-        </>
-      )}
-      <button
-        onClick={() => setEditarimagen(!editarimagen)}
-        className="inventario-editar-producto-input-imagen"
-      >
-        <BiCamera />
-      </button>
-    </div>
-    <div className="inventario-editar-producto-input">
-      <label htmlFor="">Valor del producto</label>
-      <input type="number" />
-    </div>
-    <div className="inventario-editar-producto-input">
-      <label htmlFor="">Stock del producto</label>
-      <input type="number" />
-    </div>
-    <div className="inventario-editar-producto-button-edit">
-      <button>Guardar</button>
-      <button  onClick={() => setEditproduct(!editproduct)}>Cancelar</button>
-    </div>
-  </div>
-</div>
+            <div className="inventario-editar-producto-box-inputs">
+               <div className="inventario-editar-producto-input">
+                  <div className="inventario-editar-producto-cerrar">
+                     <label htmlFor="">Nombre del producto</label>
+
+                     <button
+                        onClick={() => setEditproduct(!editproduct)}
+                        className="inventario-editar-producto-boton-cerrar"
+                     >
+                        +
+                     </button>
+                  </div>
+                  <input type="text" />
+               </div>
+               <div className="inventario-editar-producto-input">
+                  {editarimagen && (
+                     <>
+                        <label htmlFor="">Imagen del producto</label>
+                        <input type="url" />
+                     </>
+                  )}
+                  <button
+                     onClick={() => setEditarimagen(!editarimagen)}
+                     className="inventario-editar-producto-input-imagen"
+                  >
+                     <BiCamera />
+                  </button>
+               </div>
+               <div className="inventario-editar-producto-input">
+                  <label htmlFor="">Valor del producto</label>
+                  <input type="number" />
+               </div>
+               <div className="inventario-editar-producto-input">
+                  <label htmlFor="">Stock del producto</label>
+                  <input type="number" />
+               </div>
+               <div className="inventario-editar-producto-button-edit">
+                  <button>Guardar</button>
+                  <button onClick={() => setEditproduct(!editproduct)}>Cancelar</button>
+               </div>
+            </div>
+         </div>
 
 
       </>

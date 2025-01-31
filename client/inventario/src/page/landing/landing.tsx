@@ -5,6 +5,7 @@ import Caja from "../../assets/Caja.png"
 import PDF from "../../assets/pdf.png"
 import Beneficio1 from "../../assets/Beneficio-1.png"
 import Beneficio2 from "../../assets/Beneficio-2.png"
+import presentacion from "../../assets/presentacion.png"
 function Landing() {
     return (
         <>
@@ -32,7 +33,7 @@ function Landing() {
                             <h4>
                                 Toma el control de tu <b>STOCK</b> con un solo click
                             </h4>
-
+                            
                         </div>
 
                         <div>
@@ -43,7 +44,7 @@ function Landing() {
                     </div>
 
 
-                    <img src="https://files.oaiusercontent.com/file-Mc69d8kDA73UCG6Sogto5a?se=2025-01-29T12%3A42%3A28Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Ddfa21ba2-532b-4369-ac6c-e33a65a6fbda.webp&sig=8NGWKwWJiTzlkEZ5blCKekc1eNcj5fLzk6d8ZNrxd48%3D" alt="" />
+                    <img src={presentacion} alt="" />
 
 
 
