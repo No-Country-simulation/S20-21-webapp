@@ -1,3 +1,4 @@
+import GraphBars from "../../components/Graficos/GraphBars";
 import React from "react"
 import Tablas from "../../components/tablas/tablas"
 
@@ -35,14 +36,19 @@ const Home: React.FC = () => {
       </div>
 
       <div className="mb-4">
-        Aca va el componente del grafico
+       {/* Gráfico */}
+        <div className="w-full mb-6">
+          <div className="w-full h-[299px] md:h-[415px] bg-gray-100 shadow-[0px_1px_6px_6px_#E5E1DA] rounded-md">
+            <GraphBars/>
+          </div>
+        </div> 
       </div>
-      <div className="shadow-[0px_1px_6px_6px_#E5E1DA] w-full h-90 bg-white rounded-md ">
+      <div className="shadow-[0px_1px_6px_6px_#E5E1DA] w-full h-90 bg-white rounded-md mt-5">
         <Tablas columns={columns} data={data} /> 
       </div>
       <div className="h-4 w-full"></div>
     </div>
   )
-}
+};      
 
-export default Home
+export default Home;

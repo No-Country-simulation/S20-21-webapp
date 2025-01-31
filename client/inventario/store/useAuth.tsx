@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { loginUser, logoutUser } from "../api";
+import { loginUser } from "../api";
 
 interface User {
   id: string;
@@ -36,7 +36,6 @@ export const useAuthStore = create<AuthState>()(
         }
       },
       logout: async () => {
-        await logoutUser();
         set({ user: null, token: null, isAuthenticated: false });
       },
     }),

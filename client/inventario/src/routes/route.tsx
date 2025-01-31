@@ -56,6 +56,7 @@ const router = createBrowserRouter([
                 element: <RouteRedirect to="home" />
             },
             {
+
                 path: "perfil",
                 element: <Perfil />,
             },
