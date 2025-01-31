@@ -1,17 +1,21 @@
 /**
- * @fileoverview Configuración de rutas principales de la aplicación médica
+ * @fileoverview Configuración de rutas principales de la aplicación 
  * @module Routes
  * @version 1.0.0
  */
 
 import { createBrowserRouter } from "react-router-dom";
-import Landing from "../page/landing/landing";
-import Bacio from "../page/bacio";
+import LandingPage from "../page/landing/landing";
 import Layaud from "../page/Layaud/Layaud";
 import Perfil from "../page/perfil/perfil";
 import Inventario from "../page/inventario/inventario";
 import Login from "../page/Ingreso/Login";
 import Register from "../page/Ingreso/Register";
+import Home from "../page/home/home";
+import Proveedores from "../page/Proveedores/Proveedores";
+import Reportes from "../page/Reportes/Reportes";
+import ProtectedRoute from "./protectedRoute";
+import RouteRedirect from "./routeRedirect";
 
 
 /**
@@ -22,7 +26,7 @@ import Register from "../page/Ingreso/Register";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Landing />,
+        element: <LandingPage />,
         errorElement: <div>Ups! Algo salió mal</div>,
     },
     {
@@ -41,19 +45,36 @@ const router = createBrowserRouter([
     },
     {
         path: "/inventario",
-        element: <Layaud />,
+        element:(
+            <ProtectedRoute>
+                <Layaud />
+            </ProtectedRoute>
+        ),  
         children: [
             {
-                path: "bacio",
-                element: <Bacio />,
+                index: true,
+                element: <RouteRedirect to="home" />
             },
             {
+
                 path: "perfil",
                 element: <Perfil />,
             },
             {
                 path: "inventario",
                 element: <Inventario />,
+            },
+            {
+                path: "home",
+                element: <Home/>
+            },
+            {
+                path: "proveedores",
+                element: <Proveedores/>
+            },
+            {
+                path: "reportes",
+                element: <Reportes/>
             },
         ],
         errorElement: <div>Ups! Algo salió mal</div>,
