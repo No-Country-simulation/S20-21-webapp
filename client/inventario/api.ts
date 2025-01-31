@@ -1,8 +1,8 @@
-const API_URL = "http://localhost:3000"; 
+const API_URL = "http://localhost:3000/api/v1"; 
 
 export const loginUser = async (email: string, password: string) => {
     try {
-        const response = await fetch("/api/login", {
+        const response = await fetch(API_URL+"/auth/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password }),
@@ -18,9 +18,4 @@ export const loginUser = async (email: string, password: string) => {
         console.error("Error en login:", error);
         throw error; // Lanzamos el error para que lo maneje el store
     }
-};
-
-
-export const logoutUser = async () => {
-  await fetch(`${API_URL}/api/v1/auth/login`, { method: "POST"});
 };

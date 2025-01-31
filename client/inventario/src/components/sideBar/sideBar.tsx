@@ -1,5 +1,6 @@
 import { HomeIcon, CubeIcon, TruckIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
+import { useAuthStore } from '../../../store/useAuth';
 
 interface SideBarProps {
   closeSidebar: () => void; 
@@ -57,6 +58,19 @@ const SideBar: React.FC<SideBarProps> = ({ closeSidebar, setIsSidebarOpen }) => 
           </Link>
         </li>
       </ul>
+
+      <div>
+        <button
+        className=''
+        onClick={() =>{
+          const logout = useAuthStore.getState().logout
+          logout()
+          window.location.href = '../../ingreso/login'
+        }}
+        >
+          Cerrar Sesión
+        </button>
+      </div>
 
       <footer className="mt-auto text-sm text-center bg-gradient-to-b from-transparent py-4 border-t border-beigeclaro">
         <p className=''>&copy;equipo s20-21 2025</p>

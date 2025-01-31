@@ -5,11 +5,7 @@
  */
 
 import { createBrowserRouter } from "react-router-dom";
-<<<<<<< HEAD
-import LandingPage from "../page/landing/landingPage";
-=======
 import LandingPage from "../page/landing/landing";
->>>>>>> fe5d922e7aa24a2c7552a6a3e8d5d32c6e63a16f
 import Layaud from "../page/Layaud/Layaud";
 import Perfil from "../page/perfil/perfil";
 import Inventario from "../page/inventario/inventario";
@@ -56,13 +52,11 @@ const router = createBrowserRouter([
         ),  
         children: [
             {
-<<<<<<< HEAD
-=======
                 index: true,
                 element: <RouteRedirect to="home" />
             },
             {
->>>>>>> fe5d922e7aa24a2c7552a6a3e8d5d32c6e63a16f
+
                 path: "perfil",
                 element: <Perfil />,
             },

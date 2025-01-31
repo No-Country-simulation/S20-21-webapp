@@ -14,7 +14,7 @@ function Login() {
         setError(""); // Resetear errores
         const success = await login(email, password);
         if (success) {
-            navigate("../../inventari/home"); // Cambia esto por la página a la que deba redirigir
+            navigate("../../inventario/home"); // Cambia esto por la página a la que deba redirigir
         } else {
             setError("Correo o contraseña incorrectos");
         }
