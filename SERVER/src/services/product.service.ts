@@ -1,4 +1,5 @@
 import { Product } from "../models/product.model";
+import { sendNotification } from "../socket/webSocket";
 import notificationService from "./notification.service";
 
 interface productInput {
@@ -53,7 +54,8 @@ export class ProductService {
       img: data.img || product.dataValues.img // Mantiene la imagen si no se actualiza
     });
     if(data.stock!==undefined && data.stock <= product.dataValues.minimum_stock){
-      await notificationService.createNotification(product);
+      const message = `⚠️ El producto ${product.dataValues.name} está por agotarse. Stock actual: ${data.stock}`;
+      sendNotification(message);
     }
     return 
   }

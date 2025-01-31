@@ -1,4 +1,4 @@
-import app from './app';
+import { app, server } from './app'; // Importa correctamente
 import sequelize from './config/db'; // Configuración de tu base de datos
 import './models/initModels'; // Inicializa tus modelos
 
@@ -10,8 +10,8 @@ const main = async (): Promise<void> => {
         await sequelize.sync();
         console.log('Database connected successfully.');
 
-        // Inicia el servidor
-        app.listen(PORT, () => {
+        // Inicia el servidor con WebSockets integrado
+        server.listen(PORT, () => {
             console.log(`Server is running on http://localhost:${PORT}`);
         });
     } catch (error) {
