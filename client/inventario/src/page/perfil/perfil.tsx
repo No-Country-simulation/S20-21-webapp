@@ -7,14 +7,13 @@ import { Toaster,toast } from "sonner";
 
 function Perfil() {
     const { user} = useAuthStore(); 
-
+   
     const [name, setName] = useState(user?.name || "");
     const [company, setCompany] = useState(user?.company || "");
     const [email, setEmail] = useState(user?.email || "");
     const [phone, setPhone] = useState(user?.phone || "");
     const [selectedFile, setSelectedFile] = useState(null);
-    const [oldPassword, setOldPassword] = useState("");  // Para la antigua contraseña
-    const [newPassword, setNewPassword] = useState("");  // Para la nueva contraseña
+    const [newPassword, setNewPassword] = useState("");  
 
     // Manejador para la imagen
     const handleFileChange = (e) => {
@@ -46,25 +45,23 @@ function Perfil() {
         }
     };
 
+  
+
     const handlePasswordChange = async () => {
-        if (!oldPassword || !newPassword) {
-            toast.info("Por favor, complete ambos campos de contraseña.");
+        if (!newPassword) {
+            toast.info("Por favor, ingrese la nueva contraseña.");
             return;
         }
-
+    
         try {
-            // Aquí puedes hacer una solicitud para cambiar la contraseña si es necesario
-            const response = await axios.put(`http://localhost:3000/api/v1/user/${user?.id}/password`, {
-                oldPassword,
-                newPassword
-            });
-
+            await axios.put(`http://localhost:3000/api/v1/user/${user?.id}`, { newPassword });
             toast.success("Contraseña actualizada con éxito!");
         } catch (error) {
             console.error("Error al actualizar la contraseña:", error);
             toast.error(error.response?.data?.message || "Error al actualizar contraseña");
         }
     };
+    
    console.log(user);
    
     
@@ -101,7 +98,7 @@ function Perfil() {
                 <div className="perfil-edit-info">
                     <div className="perfil-edit-info-inputs-1">
                         <label htmlFor="email">Email</label>
-                        <input placeholder={email} id="email" value={email} type="text" />
+                        <input placeholder={email} id="email" value={email} type="text" readOnly />
                     </div>
                     <div className="perfil-edit-info-inputs-1">
                         <label htmlFor="phone">Número de teléfono</label>
@@ -113,34 +110,7 @@ function Perfil() {
                     <button onClick={handleUpdate}>Actualizar Información</button>
                 </div>
 
-                <div className="perfil-title">
-                    <h4>Información de seguridad</h4>
-                </div>
 
-                <div className="perfil-edit-info">
-                    <div className="perfil-edit-info-inputs-2">
-                        <label htmlFor="old-password">Antigua contraseña</label>
-                        <input
-                            id="old-password"
-                            type="password"
-                            value={oldPassword}
-                            onChange={(e) => setOldPassword(e.target.value)}
-                        />
-                    </div>
-                    <div className="perfil-edit-info-inputs-2">
-                        <label htmlFor="new-password">Contraseña Nueva</label>
-                        <input
-                            id="new-password"
-                            type="password"
-                            value={newPassword}
-                            onChange={(e) => setNewPassword(e.target.value)}
-                        />
-                    </div>
-                </div>
-
-                <div className="perfil-edit-info-button-update">
-                    <button onClick={handlePasswordChange}>Cambiar contraseña</button>
-                </div>
             </div>
         </div>
     );
