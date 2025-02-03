@@ -16,6 +16,7 @@ import Proveedores from "../page/Proveedores/Proveedores";
 import Reportes from "../page/Reportes/Reportes";
 import ProtectedRoute from "./protectedRoute";
 import RouteRedirect from "./routeRedirect";
+import Error404 from "../page/err/error404";
 
 
 /**
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <LandingPage />,
-        errorElement: <div>Ups! Algo salió mal</div>,
+        errorElement: <Error404/>,
     },
     {
         path: "/ingreso",
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
                 element: <Register />,
             },
         ],
-        errorElement: <div>Ups! Algo salió mal</div>,
+        errorElement: <Error404/>,
     },
     {
         path: "/inventario",
@@ -77,7 +78,7 @@ const router = createBrowserRouter([
                 element: <Reportes/>
             },
         ],
-        errorElement: <div>Ups! Algo salió mal</div>,
+        errorElement: <Error404/>,
     },
 ]);
 
