@@ -130,8 +130,10 @@ const [busqueda, setBusqueda] = useState("");
    const eliminarProducto = async (id: string): Promise<void> => {
       try {
          await axios.delete(`http://localhost:3000/api/v1/product/${id}`);
-         obtenerProductos();
+      
+      
          toast.success("Producto Eliminado con exito");
+         obtenerProductos();
       } catch (error) {
          console.error("Error al eliminar el producto", error);
       }

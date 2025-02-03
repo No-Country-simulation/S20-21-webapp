@@ -104,8 +104,8 @@ function Perfil() {
                         <input placeholder={email} id="email" value={email} type="text" />
                     </div>
                     <div className="perfil-edit-info-inputs-1">
-                        <label htmlFor="telefono">Número de teléfono</label>
-                        <input id="telefono" value={phone} onChange={(e) => setPhone(e.target.value)} type="number" />
+                        <label htmlFor="phone">Número de teléfono</label>
+                        <input id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} type="text" />
                     </div>
                 </div>
 
