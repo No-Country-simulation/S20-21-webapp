@@ -55,6 +55,7 @@ const [busqueda, setBusqueda] = useState("");
 
 
    const productosFiltrados = productosusuario.filter((producto) => {
+      const cantidadBusqueda = parseInt(busqueda);
       if (!filtrarpor) return true; // Si no hay filtro, mostrar todo
    
       switch (filtrarpor) {
@@ -63,7 +64,7 @@ const [busqueda, setBusqueda] = useState("");
          case "Status":
             return (producto.stock === 0 ? "AGOTADO" : producto.stock <= 25 ? "POR AGOTARSE" : "DISPONIBLE").toLowerCase().includes(busqueda);
          case "Cantidad":
-            const cantidadBusqueda = parseInt(busqueda);
+          
            
             return producto.stock === cantidadBusqueda;
          case "Valor":
@@ -102,7 +103,7 @@ const [busqueda, setBusqueda] = useState("");
             formData.append("img", productoNuevo.img);
          }
    
-         const response = await axios.post("https://stockly-backend.vercel.app/api/v1/product", formData, {
+           await axios.post("https://stockly-backend.vercel.app/api/v1/product", formData, {
             headers: {
                "Content-Type": "multipart/form-data",
             },
@@ -172,8 +173,8 @@ const [busqueda, setBusqueda] = useState("");
 
             <input value={busqueda} onChange={(e) => setBusqueda(e.target.value.toLowerCase())} placeholder="Buscar producto " type="text" />
 
-            <select onChange={(e) => setFiltrarpor(e.target.value as any)}>
-  
+            <select onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setFiltrarpor(e.target.value as 'Nombre' | 'Status' | 'Cantidad' | 'Valor')}>
+               <option value="">Filtrar por</option>
    <option value="Nombre">Nombre</option>
    <option value="Status">Status</option>
    <option value="Cantidad">Cantidad</option>

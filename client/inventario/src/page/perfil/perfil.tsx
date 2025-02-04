@@ -45,9 +45,14 @@ const Perfil: React.FC = () => {
                 headers: { "Content-Type": "multipart/form-data" }
             });
             toast.success("Usuario actualizado con éxito!");
-        } catch (error: any) {
-            console.error("Error al actualizar:", error);
-            toast.error(error.response?.data?.message || "Error al actualizar usuario");
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                console.error("Error al actualizar:", error);
+                toast.error(error.response?.data?.message || "Error al actualizar usuario");
+            } else {
+                console.error("Error desconocido:", error);
+                toast.error("Error inesperado");
+            }
         }
     };
 
