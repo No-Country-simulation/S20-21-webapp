@@ -31,7 +31,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, isSidebarOpen, cantidadN
           aria-label="Abrir Sidebar"
           onClick={handleToggle}
         >
-          INVENTIA
+          STOCKLY
         </button>
       </div>
 
