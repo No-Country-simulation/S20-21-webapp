@@ -24,6 +24,7 @@ interface RegisterUserParams {
       img: string;
       company: string;
       typeBusiness: string;
+      phone:string;
     };
   }
 export const registerUser = async ({ name, email }: RegisterUserParams) => {
@@ -98,7 +99,7 @@ export const registerUser = async ({ name, email }: RegisterUserParams) => {
     // Buscar al usuario por email
     const user = await User.findOne({
       where: { email },
-      attributes: ["id", "password", "name", "email", "img", "company", "typeBusiness"],
+      attributes: ["id", "password", "name", "email", "img", "company", "typeBusiness", "phone"],
     });
   
     if (!user) {
@@ -124,7 +125,8 @@ export const registerUser = async ({ name, email }: RegisterUserParams) => {
         email: userData.email,
         img: userData.img,
         company:userData.company,
-        typeBusiness:userData.typeBusiness
+        typeBusiness:userData.typeBusiness,
+        phone:userData.phone
       },
     };
   };

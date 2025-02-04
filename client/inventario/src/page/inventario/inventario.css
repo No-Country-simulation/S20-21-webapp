@@ -351,7 +351,7 @@ background: rgba(255, 15, 10, 1);
 
     .inventario-agregar-producto,
     .inventario-editar-producto {
-        width: 70%;
+        width: 35%;
     }
 
     .inventario-filter select {
@@ -399,7 +399,7 @@ background: rgba(255, 15, 10, 1);
 
     .inventario-agregar-producto,
     .inventario-editar-producto {
-        width: 80%;
+        width: 50%;
     }
 }
 
@@ -464,7 +464,7 @@ background: rgba(255, 15, 10, 1);
 
     .inventario-agregar-producto,
     .inventario-editar-producto {
-        width: 90%;
+        width: 70%;
     }
 
     .inventario-agregar-producto-title h4,
@@ -474,12 +474,12 @@ background: rgba(255, 15, 10, 1);
 
     .inventario-agregar-producto-input input,
     .inventario-editar-producto-input input {
-        width: 100%;
+        width: 60%;
     }
 
     .inventario-agregar-producto-button-add button,
     .inventario-editar-producto-button-edit button {
-        width: 100%;
+        width: 94%;
     }
 }
 
@@ -536,7 +536,11 @@ background: rgba(255, 15, 10, 1);
         position: fixed;
     }
     
- 
+ .inventario-agregar-producto-boton-cerrar{
+   right: 3%;
+   top: 5%;
+   font-size: 35px;
+ }
 
     .inventario-button-add-box {
         height: 50px;
@@ -548,6 +552,10 @@ background: rgba(255, 15, 10, 1);
     .inventario-editar-producto {
         width: 90%;
     }
+ 
+   .inventario-agregar-producto-input-imagen  {
+    font-size: 36px;
+}
 
     .inventario-agregar-producto-title h4,
     .inventario-editar-producto-title h4 {
@@ -556,12 +564,12 @@ background: rgba(255, 15, 10, 1);
 
     .inventario-agregar-producto-input input,
     .inventario-editar-producto-input input {
-        width: 100%;
+        width: 50%;
     }
 
     .inventario-agregar-producto-button-add button,
     .inventario-editar-producto-button-edit button {
-        width: 100%;
+        width: 90%;
     }
 }
 
